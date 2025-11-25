@@ -1,0 +1,73 @@
+<!--<h2 style="text-align: center;">Listado de Reservaciones de Hotel</h2>
+<div>
+  @if(cargando()){
+    <div>
+      <p>Cargando datos...</p>
+    </div>
+  }
+  @if(!cargando() && reservacioneshoteles().length > 0){
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>idReservacionHotel</th>
+            <th>idHotel</th>
+            <th>idCliente</th>
+            <th>Fecha de Reservación</th>
+            <th>Número de Huéspedes</th>
+            <th>Número de Habitaciones</th>
+            <th>Fecha de Entrada</th>
+            <th>Fecha de Salida</th>
+            <th>Total</th>
+            <th>Método de Pago</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(r of reservacioneshoteles(); track r.idReservacionHotel){
+          <tr>
+            <td>{{ r.idReservacionHotel }}</td>
+            <td>{{ r.idHotel }}</td>
+            <td>{{ r.idCliente }}</td>
+            <td>{{ r.fechaReservacion }}</td>
+            <td>{{ r.numeroHuespedes }}</td>
+            <td>{{ r.numeroHabitaciones }}</td>
+            <td>{{ r.fechaEntrada }}</td>
+            <td>{{ r.fechaSalida }}</td>
+            <td>{{ r.total }}</td>
+            <td>{{ r.metodoPago }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>-->
+
+<h2 style="text-align: center;">Listado de Reservaciones de Hotel</h2>
+<div>
+  @if(cargando()){
+    <div>
+      <p>Cargando datos...</p>
+    </div>
+  }
+  <!-- Listado de reservaciones en tarjetas -->
+  @if(!cargando() && reservacioneshoteles().length > 0){
+    <div class="cards-container">
+      @for(r of reservacioneshoteles(); track r.idReservacionHotel){
+        <div class="card">
+          <h3>Reservación ID: {{ r.idReservacionHotel }}</h3>
+
+          <p><strong>ID del Hotel:</strong> {{ r.idHotel }}</p>
+          <p><strong>ID del Cliente:</strong> {{ r.idCliente }}</p>
+          <p><strong>Fecha de reservación:</strong> {{ r.fechaReservacion }}</p>
+          <p><strong>Número de huéspedes:</strong> {{ r.numeroHuespedes }}</p>
+          <p><strong>Número de habitaciones:</strong> {{ r.numeroHabitaciones }}</p>
+          <p><strong>Fecha de entrada:</strong> {{ r.fechaEntrada }}</p>
+          <p><strong>Fecha de salida:</strong> {{ r.fechaSalida }}</p>
+          <p><strong>Total:</strong> ${{ r.total }}</p>
+          <p><strong>Método de pago:</strong> {{ r.metodoPago }}</p>
+        </div>
+      }
+    </div>
+  }
+</div>

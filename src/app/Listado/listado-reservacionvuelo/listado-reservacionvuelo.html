@@ -1,0 +1,64 @@
+<!--<h2 style="text-align: center;">Listado de Reservaciones de Vuelos</h2>
+<div>
+  @if(cargando()){
+    <div>
+      <p>Cargando datos...</p>
+    </div>
+  }
+  @if(!cargando() && reservacionesVuelos().length > 0){
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>idReservacionVuelo</th>
+            <th>idVuelo</th>
+            <th>idCliente</th>
+            <th>Fecha de Reservación</th>
+            <th>Cantidad de Boletos</th>
+            <th>Total</th>
+            <th>Método de Pago</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(r of reservacionesVuelos(); track r.idReservacionVuelo){
+          <tr>
+            <td>{{ r.idReservacionVuelo }}</td>
+            <td>{{ r.idVuelo }}</td>
+            <td>{{ r.idCliente }}</td>
+            <td>{{ r.fechaReservacion }}</td>
+            <td>{{ r.cantidadBoletos }}</td>
+            <td>{{ r.total }}</td>
+            <td>{{ r.metodoPago }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>-->
+
+<h2 style="text-align: center;">Listado de Reservaciones de Vuelo</h2>
+<div>
+  @if(cargando()){
+    <div>
+      <p>Cargando datos...</p>
+    </div>
+  }
+  <!-- Listado de reservaciones de vuelo en tarjetas -->
+  @if(!cargando() && reservacionesVuelos().length > 0){
+    <div class="cards-container">
+      @for(r of reservacionesVuelos(); track r.idReservacionVuelo){
+        <div class="card">
+          <h3>Reservación ID: {{ r.idReservacionVuelo }}</h3>
+
+          <p><strong>ID del Vuelo:</strong> {{ r.idVuelo }}</p>
+          <p><strong>ID del Cliente:</strong> {{ r.idCliente }}</p>
+          <p><strong>Fecha de reservación:</strong> {{ r.fechaReservacion }}</p>
+          <p><strong>Cantidad de boletos:</strong> {{ r.cantidadBoletos }}</p>
+          <p><strong>Total:</strong> ${{ r.total }}</p>
+          <p><strong>Método de pago:</strong> {{ r.metodoPago }}</p>
+        </div>
+      }
+    </div>
+  }
+</div>

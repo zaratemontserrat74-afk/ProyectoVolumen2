@@ -1,0 +1,133 @@
+<div class="banner-container">
+  <img class="banner-img" src="" alt="Fondo de reservación" />
+
+  <div class="banner-content">
+    <div class="d-flex justify-content-center align-items-center min-vh-100 bg-reservacion">
+      <div class="card-glass" style="max-width: 500px; width: 100%;">
+        <h2 class="text-center mb-4 title-reservacion">Agregar Nueva Reservación de Hotel</h2>
+
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+          <!-- AUTOCOMPLETE HOTEL -->
+          <div class="mb-3 position-relative">
+            <label class="form-label">Buscar Hotel</label>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Escribe el nombre del hotel"
+                   [(ngModel)]="nombreHotel"
+                   (input)="filtrarHoteles()"
+                   name="nombreHotel">
+
+            <ul class="list-group position-absolute mt-1"
+                *ngIf="mostrarListaHoteles && hotelesFiltrados.length > 0"
+                style="z-index: 1000;">
+              <li class="list-group-item list-group-item-action"
+                  *ngFor="let h of hotelesFiltrados"
+                  (click)="seleccionarHotel(h)">
+                {{ h.nombre }} ID_{{h.idHotel}}
+              </li>
+            </ul>
+          </div>
+
+          <input type="hidden" name="idHotel" [(ngModel)]="model.idHotel">
+
+
+          <!-- AUTOCOMPLETE CLIENTE -->
+          <div class="mb-3 position-relative">
+            <label class="form-label">Buscar Cliente</label>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Escribe el nombre del cliente"
+                   [(ngModel)]="nombreCliente"
+                   (input)="filtrarClientes()"
+                   name="nombreCliente">
+
+            <ul class="list-group position-absolute mt-1"
+                *ngIf="mostrarListaClientes && clientesFiltrados.length > 0"
+                style="z-index: 1000;">
+              <li class="list-group-item list-group-item-action"
+                  *ngFor="let c of clientesFiltrados"
+                  (click)="seleccionarCliente(c)">
+                {{ c.nombre }} ID_{{c.idCliente}}
+              </li>
+            </ul>
+          </div>
+
+          <input type="hidden" name="idCliente" [(ngModel)]="model.idCliente">
+
+
+          <!-- Fecha de reservación -->
+          <div class="mb-3">
+            <label class="form-label">Fecha de Reservación</label>
+            <input type="date" class="form-control" name="fechaReservacion" required [(ngModel)]="model.fechaReservacion" #fechaReservacion="ngModel">
+            @if (fechaReservacion.invalid && fechaReservacion.touched) {
+              <div class="text-danger small">Seleccione una fecha válida</div>
+            }
+          </div>
+
+          <!-- Número de huéspedes -->
+          <div class="mb-3">
+            <label class="form-label">Número de Huéspedes</label>
+            <input type="number" class="form-control" name="numeroHuespedes" required [(ngModel)]="model.numeroHuespedes" #numeroHuespedes="ngModel" min="1">
+            @if (numeroHuespedes.invalid && numeroHuespedes.touched) {
+              <div class="text-danger small">Ingrese un número válido de huéspedes</div>
+            }
+          </div>
+
+          <!-- Número de habitaciones -->
+          <div class="mb-3">
+            <label class="form-label">Número de Habitaciones</label>
+            <input type="number" class="form-control" name="numeroHabitaciones" required [(ngModel)]="model.numeroHabitaciones" #numeroHabitaciones="ngModel" min="1">
+            @if (numeroHabitaciones.invalid && numeroHabitaciones.touched) {
+              <div class="text-danger small">Ingrese un número válido de habitaciones</div>
+            }
+          </div>
+
+          <!-- Fecha de entrada -->
+          <div class="mb-3">
+            <label class="form-label">Fecha de Entrada</label>
+            <input type="date" class="form-control" name="fechaEntrada" required [(ngModel)]="model.fechaEntrada" #fechaEntrada="ngModel">
+            @if (fechaEntrada.invalid && fechaEntrada.touched) {
+              <div class="text-danger small">Seleccione una fecha válida</div>
+            }
+          </div>
+
+          <!-- Fecha de salida -->
+          <div class="mb-3">
+            <label class="form-label">Fecha de Salida</label>
+            <input type="date" class="form-control" name="fechaSalida" required [(ngModel)]="model.fechaSalida" #fechaSalida="ngModel">
+            @if (fechaSalida.invalid && fechaSalida.touched) {
+              <div class="text-danger small">Seleccione una fecha válida</div>
+            }
+          </div>
+
+          <!-- Total -->
+          <div class="mb-3">
+            <label class="form-label">Total</label>
+            <input type="number" class="form-control" name="total" required [(ngModel)]="model.total" #total="ngModel" min="0" step="0.01">
+            @if (total.invalid && total.touched) {
+              <div class="text-danger small">Ingrese un total válido</div>
+            }
+          </div>
+
+          <!-- Método de pago -->
+          <div class="mb-3">
+            <label class="form-label">Método de Pago</label>
+            <select class="form-control" name="metodoPago" required [(ngModel)]="model.metodoPago" #metodoPago="ngModel">
+              <option value="" disabled selected>Seleccione una opción</option>
+              <option value="Efectivo">Efectivo</option>
+              <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+              <option value="Transferencia">Transferencia</option>
+            </select>
+            @if (metodoPago.invalid && metodoPago.touched) {
+              <div class="text-danger small">Seleccione un método de pago</div>
+            }
+          </div>
+
+          <button type="submit" class="btn-boda w-100" [disabled]="f.invalid">Agregar Reservación</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

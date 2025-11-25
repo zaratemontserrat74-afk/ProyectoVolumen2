@@ -1,0 +1,65 @@
+<!--<h2 style="text-align: center;">Listado de Clientes</h2>
+<div>
+  @if(cargando()){
+    <div>
+      <p>Cargando datos...</p>
+    </div>
+  }
+  @if(!cargando() && clientes().length > 0){
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>idCliente</th>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+            <th>Fecha de Registro</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(c of clientes(); track c.idCliente){
+          <tr>
+            <td>{{ c.idCliente }}</td>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.apellidoPaterno }}</td>
+            <td>{{ c.apellidoMaterno }}</td>
+            <td>{{ c.fechaNacimiento }}</td>
+            <td>{{ c.telefono }}</td>
+            <td>{{ c.correo }}</td>
+            <td>{{ c.fechaRegistro }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>-->
+
+<h2 style="text-align: center;">Listado de Clientes</h2>
+<div>
+  @if(cargando()){
+    <div>
+      <p>Cargando datos...</p>
+    </div>
+  }
+  <!-- Listado de clientes en tarjetas -->
+  @if(!cargando() && clientes().length > 0){
+    <div class="cards-container">
+      @for(c of clientes(); track c.idCliente){
+        <div class="card">
+          <h3>{{ c.nombre }} {{ c.apellidoPaterno }} {{ c.apellidoMaterno }}</h3>
+
+          <p><strong>ID del cliente:</strong> {{ c.idCliente }}</p>
+          <p><strong>Fecha de nacimiento:</strong> {{ c.fechaNacimiento }}</p>
+          <p><strong>Teléfono:</strong> {{ c.telefono }}</p>
+          <p><strong>Correo:</strong> {{ c.correo }}</p>
+          <p><strong>Fecha de registro:</strong> {{ c.fechaRegistro }}</p>
+        </div>
+      }
+    </div>
+  }
+</div>

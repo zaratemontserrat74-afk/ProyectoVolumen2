@@ -1,0 +1,67 @@
+<!--<h2 style="text-align: center;">Listado de Hoteles</h2>
+<div>
+  @if(cargando()){
+    <div>
+      <p>Cargando datos...</p>
+    </div>
+  }
+  @if(!cargando() && hoteles().length > 0){
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>idHotel</th>
+            <th>Nombre</th>
+            <th>País</th>
+            <th>Ciudad</th>
+            <th>Estrellas</th>
+            <th>Precio por Noche</th>
+            <th>Tipo de Habitación</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(h of hoteles(); track h.idHotel){
+          <tr>
+            <td>{{ h.idHotel }}</td>
+            <td>{{ h.nombre }}</td>
+            <td>{{ h.pais }}</td>
+            <td>{{ h.ciudad }}</td>
+            <td>{{ h.estrellas }}</td>
+            <td>{{ h.precioNoche }}</td>
+            <td>{{ h.tipoHabitacion }}</td>
+            <td>{{ h.descripcion }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>-->
+
+<h2 style="text-align: center;">Listado de Hoteles</h2>
+<div>
+  @if(cargando()){
+    <div>
+      <p>Cargando datos...</p>
+    </div>
+  }
+  <!-- Listado de hoteles en tarjetas -->
+  @if(!cargando() && hoteles().length > 0){
+    <div class="cards-container">
+      @for(h of hoteles(); track h.idHotel){
+        <div class="card">
+          <h3>{{ h.nombre }}</h3>
+
+          <p><strong>ID del hotel:</strong> {{ h.idHotel }}</p>
+          <p><strong>País:</strong> {{ h.pais }}</p>
+          <p><strong>Ciudad:</strong> {{ h.ciudad }}</p>
+          <p><strong>Estrellas:</strong> {{ h.estrellas }}</p>
+          <p><strong>Precio por noche:</strong> ${{ h.precioNoche }}</p>
+          <p><strong>Tipo de habitación:</strong> {{ h.tipoHabitacion }}</p>
+          <p><strong>Descripción:</strong> {{ h.descripcion }}</p>
+        </div>
+      }
+    </div>
+  }
+</div>

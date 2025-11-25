@@ -1,0 +1,96 @@
+<div class="banner-container">
+  <img class="banner-img" src="" alt="Fondo de reservación de vuelo" />
+
+  <div class="banner-content">
+    <div class="d-flex justify-content-center align-items-center min-vh-100 bg-reservacion">
+      <div class="card-glass" style="max-width: 500px; width: 100%;">
+        <h2 class="text-center mb-4 title-reservacion">Agregar Nueva Reservación de Vuelo</h2>
+
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+          <!-- AUTOCOMPLETE VUELO -->
+          <div class="mb-3 position-relative">
+            <label class="form-label">Buscar Vuelo</label>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Escribe ID o aerolínea"
+                   [(ngModel)]="textoVuelo"
+                   (input)="filtrarVuelos()"
+                   name="textoVuelo">
+
+            <ul class="list-group position-absolute mt-1"
+                *ngIf="mostrarListaVuelos && vuelosFiltrados.length > 0"
+                style="z-index: 1000;">
+              <li class="list-group-item list-group-item-action"
+                  *ngFor="let v of vuelosFiltrados"
+                  (click)="seleccionarVuelo(v)">
+                {{ v.idVuelo }} — {{ v.aerolinea }} ({{v.origen}} → {{v.destino}})
+              </li>
+            </ul>
+          </div>
+
+          <input type="hidden" name="idVuelo" [(ngModel)]="model.idVuelo">
+
+
+          <!-- AUTOCOMPLETE CLIENTE -->
+          <div class="mb-3 position-relative">
+            <label class="form-label">Buscar Cliente</label>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Escribe el nombre del cliente"
+                   [(ngModel)]="textoCliente"
+                   (input)="filtrarClientes()"
+                   name="textoCliente">
+
+            <ul class="list-group position-absolute mt-1"
+                *ngIf="mostrarListaClientes && clientesFiltrados.length > 0"
+                style="z-index: 1000;">
+              <li class="list-group-item list-group-item-action"
+                  *ngFor="let c of clientesFiltrados"
+                  (click)="seleccionarCliente(c)">
+                {{ c.nombre }} — ID {{c.idCliente}}
+              </li>
+            </ul>
+          </div>
+
+          <input type="hidden" name="idCliente" [(ngModel)]="model.idCliente">
+
+
+          <!-- Fecha de reservación -->
+          <div class="mb-3">
+            <label class="form-label">Fecha de Reservación</label>
+            <input type="date" class="form-control" name="fechaReservacion" required [(ngModel)]="model.fechaReservacion" #fechaReservacion="ngModel">
+          </div>
+
+          <!-- Cantidad -->
+          <div class="mb-3">
+            <label class="form-label">Cantidad de Boletos</label>
+            <input type="number" class="form-control" name="cantidadBoletos" required [(ngModel)]="model.cantidadBoletos" min="1">
+          </div>
+
+          <!-- Total -->
+          <div class="mb-3">
+            <label class="form-label">Total</label>
+            <input type="number" class="form-control" name="total" required [(ngModel)]="model.total" min="0" step="0.01">
+          </div>
+
+          <!-- Método de pago -->
+          <div class="mb-3">
+            <label class="form-label">Método de Pago</label>
+            <select class="form-control" name="metodoPago" required [(ngModel)]="model.metodoPago">
+              <option value="" disabled selected>Seleccione una opción</option>
+              <option value="Efectivo">Efectivo</option>
+              <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+              <option value="Transferencia">Transferencia</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-boda w-100" [disabled]="f.invalid">
+            Agregar Reservación
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

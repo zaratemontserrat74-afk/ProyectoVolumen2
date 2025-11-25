@@ -1,0 +1,72 @@
+<img src="https://images.pexels.com/photos/18672635/pexels-photo-18672635.jpeg?_gl=1*ebt04l*_ga*MTIxMzM4MDkxNS4xNzU4MTI2Mzg5*_ga_8JE65Q40S6*czE3NjQxMTE4MzAkbzExJGcxJHQxNzY0MTExODMxJGo1OSRsMCRoMA..">
+<div class="cliente-wrapper">
+
+  <!-- COLUMNA IZQUIERDA -->
+  <div class="cliente-left">
+    <div class="overlay"></div>
+    <div class="cliente-left-content">
+      <h2 class="brand-title">CLIENTE PLUS</h2>
+      <p class="brand-sub">Registra clientes con un estilo moderno</p>
+      <img src="https://i.pinimg.com/736x/2f/3b/24/2f3b24b9e5b3908962fa00c186d606df.jpg" alt="Cliente" class="side-image"/>
+    </div>
+  </div>
+
+  <!-- COLUMNA DERECHA -->
+  <div class="cliente-right">
+
+    <div class="form-card ">
+
+      <h1 class="form-title">Agregar Nuevo Cliente</h1>
+      <p class="form-subtitle">Completa la información requerida</p>
+
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+        <div class="form-group col-10 sm-12 lg-8" >
+          <label>Nombre</label>
+          <input type="text" class="input" name="nombre" required [(ngModel)]="model.nombre" #nombre="ngModel">
+        </div>
+
+        <div class="form-group col-10 sm-12 lg-8" >
+          <label>Apellido Paterno</label>
+          <input type="text" class="input" name="apellidoPaterno" required [(ngModel)]="model.apellidoPaterno" #apellidoPaterno="ngModel">
+        </div>
+
+        <div class="form-group col-10 sm-12 lg-8" >
+          <label>Apellido Materno</label>
+          <input type="text" class="input" name="apellidoMaterno" required [(ngModel)]="model.apellidoMaterno" #apellidoMaterno="ngModel">
+        </div>
+
+        <div class="form-row col-10 sm-12 lg-8" >
+          <div class="form-group half">
+            <label>Fecha de nacimiento</label>
+            <input type="date" class="input" name="fechaNacimiento" required [(ngModel)]="model.fechaNacimiento" #fechaNacimiento="ngModel">
+          </div>
+
+          <div class="form-group half col-10 sm-12 lg-8" >
+            <label>Teléfono</label>
+            <input type="text" class="input" name="telefono" required [(ngModel)]="model.telefono" #telefono="ngModel">
+          </div>
+        </div>
+
+        <div class="form-group col-10 sm-12 lg-8" >
+          <label>Correo electrónico</label>
+          <input type="email" class="input" name="correo" required [(ngModel)]="model.correo" #correo="ngModel">
+        </div>
+
+        <div class="form-group col-10 sm-12 lg-8" >
+          <label>Fecha de registro</label>
+          <input type="date" class="input" name="fechaRegistro" required [(ngModel)]="model.fechaRegistro" #fechaRegistro="ngModel">
+        </div>
+
+        <div class="btn-container col-10 sm-12 lg-8" >
+          <button type="button" class="btn-outline">Regresar</button>
+          <button type="submit" class="btn-primary" [disabled]="f.invalid">Agregar Cliente</button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+</div>
+

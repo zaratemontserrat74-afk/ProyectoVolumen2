@@ -1,0 +1,79 @@
+<!--<h2 style="text-align: center;">Listado de Vuelos</h2>
+<div>
+  @if(cargando()){
+    <div>
+      <p>Cargando datos...</p>
+    </div>
+  }
+  @if(!cargando() && vuelos().length > 0){
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>idVuelo</th>
+            <th>Aerolínea</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Fecha de Salida</th>
+            <th>Hora de Salida</th>
+            <th>Fecha de Llegada</th>
+            <th>Hora de Llegada</th>
+            <th>Duración</th>
+            <th>Precio del Boleto</th>
+            <th>Asientos Totales</th>
+            <th>Clase</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(v of vuelos(); track v.idVuelo){
+          <tr>
+            <td>{{ v.idVuelo }}</td>
+            <td>{{ v.aerolinea }}</td>
+            <td>{{ v.origen }}</td>
+            <td>{{ v.destino }}</td>
+            <td>{{ v.fechaSalida }}</td>
+            <td>{{ v.horaSalida }}</td>
+            <td>{{ v.fechaLlegada }}</td>
+            <td>{{ v.horaLlegada }}</td>
+            <td>{{ v.duracion }}</td>
+            <td>{{ v.precioBoleto }}</td>
+            <td>{{ v.asientosTotales }}</td>
+            <td>{{ v.clase }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>-->
+
+<h2 style="text-align: center;">Listado de Vuelos</h2>
+<div>
+  @if(cargando()){
+    <div>
+      <p>Cargando datos...</p>
+    </div>
+  }
+  <!-- Listado de vuelos en tarjetas -->
+  @if(!cargando() && vuelos().length > 0){
+    <div class="cards-container">
+      @for(v of vuelos(); track v.idVuelo){
+        <div class="card">
+          <h3>{{ v.aerolinea }}</h3>
+
+          <p><strong>ID del Vuelo:</strong> {{ v.idVuelo }}</p>
+          <p><strong>Origen:</strong> {{ v.origen }}</p>
+          <p><strong>Destino:</strong> {{ v.destino }}</p>
+          <p><strong>Fecha de salida:</strong> {{ v.fechaSalida }}</p>
+          <p><strong>Hora de salida:</strong> {{ v.horaSalida }}</p>
+          <p><strong>Fecha de llegada:</strong> {{ v.fechaLlegada }}</p>
+          <p><strong>Hora de llegada:</strong> {{ v.horaLlegada }}</p>
+          <p><strong>Duración:</strong> {{ v.duracion }}</p>
+          <p><strong>Precio del boleto:</strong> ${{ v.precioBoleto }}</p>
+          <p><strong>Asientos totales:</strong> {{ v.asientosTotales }}</p>
+          <p><strong>Clase:</strong> {{ v.clase }}</p>
+        </div>
+      }
+    </div>
+  }
+</div>

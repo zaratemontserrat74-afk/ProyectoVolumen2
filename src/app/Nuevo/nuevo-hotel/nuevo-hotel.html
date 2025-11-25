@@ -1,0 +1,79 @@
+<div class="banner-container">
+  <img class="banner-img" src="" alt="Fondo de hotel" />
+
+  <div class="banner-content">
+    <div class="d-flex justify-content-center align-items-center min-vh-100 bg-hotel">
+      <div class="card-glass" style="max-width: 500px; width: 100%;">
+        <h2 class="text-center mb-4 title-hotel">Agregar Nuevo Hotel</h2>
+
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+          <!-- Nombre -->
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="nombre" required [(ngModel)]="model.nombre" #nombre="ngModel">
+            @if (nombre.invalid && nombre.touched) {
+              <div class="text-danger small">Este campo es obligatorio</div>
+            }
+          </div>
+
+          <!-- País -->
+          <div class="mb-3">
+            <label class="form-label">País</label>
+            <input type="text" class="form-control" name="pais" required [(ngModel)]="model.pais" #pais="ngModel">
+            @if (pais.invalid && pais.touched) {
+              <div class="text-danger small">Este campo es obligatorio</div>
+            }
+          </div>
+
+          <!-- Ciudad -->
+          <div class="mb-3">
+            <label class="form-label">Ciudad</label>
+            <input type="text" class="form-control" name="ciudad" required [(ngModel)]="model.ciudad" #ciudad="ngModel">
+            @if (ciudad.invalid && ciudad.touched) {
+              <div class="text-danger small">Este campo es obligatorio</div>
+            }
+          </div>
+
+          <!-- Estrellas -->
+          <div class="mb-3">
+            <label class="form-label">Estrellas</label>
+            <input type="number" class="form-control" name="estrellas" required [(ngModel)]="model.estrellas" #estrellas="ngModel" min="1" max="5">
+            @if (estrellas.invalid && estrellas.touched) {
+              <div class="text-danger small">Ingrese un número de 1 a 5</div>
+            }
+          </div>
+
+          <!-- Precio por noche -->
+          <div class="mb-3">
+            <label class="form-label">Precio por noche</label>
+            <input type="number" class="form-control" name="precioNoche" required [(ngModel)]="model.precioNoche" #precioNoche="ngModel" min="0">
+            @if (precioNoche.invalid && precioNoche.touched) {
+              <div class="text-danger small">Ingrese un precio válido</div>
+            }
+          </div>
+
+          <!-- Tipo de habitación -->
+          <div class="mb-3">
+            <label class="form-label">Tipo de habitación</label>
+            <input type="text" class="form-control" name="tipoHabitacion" required [(ngModel)]="model.tipoHabitacion" #tipoHabitacion="ngModel">
+            @if (tipoHabitacion.invalid && tipoHabitacion.touched) {
+              <div class="text-danger small">Este campo es obligatorio</div>
+            }
+          </div>
+
+          <!-- Descripción -->
+          <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <textarea class="form-control" name="descripcion" required [(ngModel)]="model.descripcion" #descripcion="ngModel"></textarea>
+            @if (descripcion.invalid && descripcion.touched) {
+              <div class="text-danger small">Este campo es obligatorio</div>
+            }
+          </div>
+
+          <button type="submit" class="btn-boda w-100" [disabled]="f.invalid">Agregar Hotel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
