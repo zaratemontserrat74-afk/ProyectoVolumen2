@@ -15,13 +15,11 @@ import { Cliente } from '../../Models/cliente.model/cliente.model';
 
 export class NuevoReservacionVuelo implements OnInit {
 
-  // ---------- VUELOS ----------
   vuelos: Vuelo[] = [];
   textoVuelo: string = "";
   vuelosFiltrados: Vuelo[] = [];
   mostrarListaVuelos: boolean = false;
 
-  // ---------- CLIENTES ----------
   clientes: Cliente[] = [];
   textoCliente: string = "";
   clientesFiltrados: Cliente[] = [];
@@ -31,8 +29,8 @@ export class NuevoReservacionVuelo implements OnInit {
     idVuelo: 0,
     idCliente: 0,
     fechaReservacion: '',
-    cantidadBoletos: 1,
-    total: 0,
+    cantidadBoletos: '',
+    total: '',
     metodoPago: ''
   };
 
@@ -45,7 +43,6 @@ export class NuevoReservacionVuelo implements OnInit {
     this.loadClientes();
   }
 
-  // ============ VUELOS ============
   loadVuelos() {
     this.http.get('http://localhost:3000/getAllVuelos')
       .subscribe((data: any) => {
@@ -71,7 +68,6 @@ export class NuevoReservacionVuelo implements OnInit {
     this.mostrarListaVuelos = false;
   }
 
-  // ============ CLIENTES ============
   loadClientes() {
     this.http.get('http://localhost:3000/getAllClientes')
       .subscribe((data: any) => {
@@ -96,7 +92,6 @@ export class NuevoReservacionVuelo implements OnInit {
     this.mostrarListaClientes = false;
   }
 
-  // ============ GUARDAR ============
   onSubmit(form: NgForm) {
     if (form.invalid) return;
 

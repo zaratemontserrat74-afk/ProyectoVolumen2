@@ -1,56 +1,20 @@
-<!--<h2 style="text-align: center;">Listado de Clientes</h2>
-<div>
-  @if(cargando()){
-    <div>
-      <p>Cargando datos...</p>
-    </div>
-  }
-  @if(!cargando() && clientes().length > 0){
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>idCliente</th>
-            <th>Nombre</th>
-            <th>Apellido Paterno</th>
-            <th>Apellido Materno</th>
-            <th>Fecha de Nacimiento</th>
-            <th>Teléfono</th>
-            <th>Correo</th>
-            <th>Fecha de Registro</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for(c of clientes(); track c.idCliente){
-          <tr>
-            <td>{{ c.idCliente }}</td>
-            <td>{{ c.nombre }}</td>
-            <td>{{ c.apellidoPaterno }}</td>
-            <td>{{ c.apellidoMaterno }}</td>
-            <td>{{ c.fechaNacimiento }}</td>
-            <td>{{ c.telefono }}</td>
-            <td>{{ c.correo }}</td>
-            <td>{{ c.fechaRegistro }}</td>
-          </tr>
-          }
-        </tbody>
-      </table>
-    </div>
-  }
-</div>-->
+<div class="img">
+  <img src="https://images.pexels.com/photos/28304626/pexels-photo-28304626.jpeg?_gl=1*1sugrfg*_ga*MTIxMzM4MDkxNS4xNzU4MTI2Mzg5*_ga_8JE65Q40S6*czE3NjQxNjczMTYkbzEyJGcxJHQxNzY0MTY4MjI2JGoyOCRsMCRoMA..">
+</div>
 
-<h2 style="text-align: center;">Listado de Clientes</h2>
-<div>
+<div class="contenedor">
+<h2 class="titulo">Listado de Clientes</h2>
+
   @if(cargando()){
-    <div>
+    <div class="cargando">
       <p>Cargando datos...</p>
     </div>
   }
-  <!-- Listado de clientes en tarjetas -->
+
   @if(!cargando() && clientes().length > 0){
-    <div class="cards-container">
+    <div class="tarjetas">
       @for(c of clientes(); track c.idCliente){
-        <div class="card">
+        <div class="postcard">
           <h3>{{ c.nombre }} {{ c.apellidoPaterno }} {{ c.apellidoMaterno }}</h3>
 
           <p><strong>ID del cliente:</strong> {{ c.idCliente }}</p>

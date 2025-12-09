@@ -1,60 +1,20 @@
-<!--<h2 style="text-align: center;">Listado de Reservaciones de Hotel</h2>
-<div>
-  @if(cargando()){
-    <div>
-      <p>Cargando datos...</p>
-    </div>
-  }
-  @if(!cargando() && reservacioneshoteles().length > 0){
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>idReservacionHotel</th>
-            <th>idHotel</th>
-            <th>idCliente</th>
-            <th>Fecha de Reservación</th>
-            <th>Número de Huéspedes</th>
-            <th>Número de Habitaciones</th>
-            <th>Fecha de Entrada</th>
-            <th>Fecha de Salida</th>
-            <th>Total</th>
-            <th>Método de Pago</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for(r of reservacioneshoteles(); track r.idReservacionHotel){
-          <tr>
-            <td>{{ r.idReservacionHotel }}</td>
-            <td>{{ r.idHotel }}</td>
-            <td>{{ r.idCliente }}</td>
-            <td>{{ r.fechaReservacion }}</td>
-            <td>{{ r.numeroHuespedes }}</td>
-            <td>{{ r.numeroHabitaciones }}</td>
-            <td>{{ r.fechaEntrada }}</td>
-            <td>{{ r.fechaSalida }}</td>
-            <td>{{ r.total }}</td>
-            <td>{{ r.metodoPago }}</td>
-          </tr>
-          }
-        </tbody>
-      </table>
-    </div>
-  }
-</div>-->
+<div class="img">
+  <img src="https://images.pexels.com/photos/28304626/pexels-photo-28304626.jpeg?_gl=1*1sugrfg*_ga*MTIxMzM4MDkxNS4xNzU4MTI2Mzg5*_ga_8JE65Q40S6*czE3NjQxNjczMTYkbzEyJGcxJHQxNzY0MTY4MjI2JGoyOCRsMCRoMA..">
+</div>
 
-<h2 style="text-align: center;">Listado de Reservaciones de Hotel</h2>
-<div>
+<div class="contenedor">
+<h2 class="titulo">Listado de Reservaciones de Hotel</h2>
+
   @if(cargando()){
-    <div>
+    <div class="cargando">
       <p>Cargando datos...</p>
     </div>
   }
-  <!-- Listado de reservaciones en tarjetas -->
+
   @if(!cargando() && reservacioneshoteles().length > 0){
-    <div class="cards-container">
+    <div class="tarjetas">
       @for(r of reservacioneshoteles(); track r.idReservacionHotel){
-        <div class="card">
+        <div class="postcard">
           <h3>Reservación ID: {{ r.idReservacionHotel }}</h3>
 
           <p><strong>ID del Hotel:</strong> {{ r.idHotel }}</p>

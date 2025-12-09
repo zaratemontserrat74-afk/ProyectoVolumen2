@@ -1,96 +1,103 @@
-<div class="banner-container">
-  <img class="banner-img" src="" alt="Fondo de reservación de vuelo" />
+<div class="contenedor-cliente">
+  <div class="lado-izquierdo">
+    <div class="contenido-izquierdo">
+      <img src="https://i.pinimg.com/1200x/48/6b/33/486b33672ab42c338de56219df2c5eb2.jpg" alt="Hotel"
+        class="imagen-lateral">
+    </div>
+  </div>
 
-  <div class="banner-content">
-    <div class="d-flex justify-content-center align-items-center min-vh-100 bg-reservacion">
-      <div class="card-glass" style="max-width: 500px; width: 100%;">
-        <h2 class="text-center mb-4 title-reservacion">Agregar Nueva Reservación de Vuelo</h2>
+  <div class="lado-derecho">
+    <div class="tarjeta-formulario">
+      <h1 class="titulo-formulario">Agregar Nueva Reservación de Vuelo</h1>
+      <p class="subtitulo-formulario">Completa la información requerida</p>
 
-        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
 
-          <!-- AUTOCOMPLETE VUELO -->
-          <div class="mb-3 position-relative">
-            <label class="form-label">Buscar Vuelo</label>
-            <input type="text"
-                   class="form-control"
-                   placeholder="Escribe ID o aerolínea"
-                   [(ngModel)]="textoVuelo"
-                   (input)="filtrarVuelos()"
-                   name="textoVuelo">
-
-            <ul class="list-group position-absolute mt-1"
-                *ngIf="mostrarListaVuelos && vuelosFiltrados.length > 0"
-                style="z-index: 1000;">
-              <li class="list-group-item list-group-item-action"
-                  *ngFor="let v of vuelosFiltrados"
-                  (click)="seleccionarVuelo(v)">
-                {{ v.idVuelo }} — {{ v.aerolinea }} ({{v.origen}} → {{v.destino}})
-              </li>
-            </ul>
-          </div>
-
-          <input type="hidden" name="idVuelo" [(ngModel)]="model.idVuelo">
-
-
-          <!-- AUTOCOMPLETE CLIENTE -->
-          <div class="mb-3 position-relative">
-            <label class="form-label">Buscar Cliente</label>
-            <input type="text"
-                   class="form-control"
-                   placeholder="Escribe el nombre del cliente"
-                   [(ngModel)]="textoCliente"
-                   (input)="filtrarClientes()"
-                   name="textoCliente">
-
-            <ul class="list-group position-absolute mt-1"
-                *ngIf="mostrarListaClientes && clientesFiltrados.length > 0"
-                style="z-index: 1000;">
-              <li class="list-group-item list-group-item-action"
-                  *ngFor="let c of clientesFiltrados"
-                  (click)="seleccionarCliente(c)">
-                {{ c.nombre }} — ID {{c.idCliente}}
-              </li>
-            </ul>
-          </div>
-
-          <input type="hidden" name="idCliente" [(ngModel)]="model.idCliente">
+        <div class="campo">
+          <label>Buscar Vuelo</label>
+          <input type="text" class="input" placeholder="Escribe ID o aerolínea" [(ngModel)]="textoVuelo"
+            (input)="filtrarVuelos()" name="textoVuelo" required #textoVueloRef="ngModel"
+            (blur)="textoVueloRef.control.markAsTouched()">
+          <ul class="list-group position-absolute mt-1" *ngIf="mostrarListaVuelos && vuelosFiltrados.length > 0"
+            style="z-index:1000;">
+            <li class="list-group-item list-group-item-action" *ngFor="let v of vuelosFiltrados"
+              (click)="seleccionarVuelo(v)">
+              {{ v.idVuelo }} — {{ v.aerolinea }} ({{v.origen}} → {{v.destino}})
+            </li>
+          </ul>
+          <small *ngIf="textoVueloRef.errors?.['required'] && textoVueloRef.touched" class="text-danger">
+            Este campo es obligatorio
+          </small>
+        </div>
+        <input type="hidden" name="idVuelo" [(ngModel)]="model.idVuelo">
 
 
-          <!-- Fecha de reservación -->
-          <div class="mb-3">
-            <label class="form-label">Fecha de Reservación</label>
-            <input type="date" class="form-control" name="fechaReservacion" required [(ngModel)]="model.fechaReservacion" #fechaReservacion="ngModel">
-          </div>
+        <div class="campo">
+          <label>Buscar Cliente</label>
+          <input type="text" class="input" placeholder="Escribe el nombre del cliente" [(ngModel)]="textoCliente"
+            (input)="filtrarClientes()" name="textoCliente" required #textoClienteRef="ngModel"
+            (blur)="textoClienteRef.control.markAsTouched()">
+          <ul class="list-group position-absolute mt-1" *ngIf="mostrarListaClientes && clientesFiltrados.length > 0"
+            style="z-index:1000;">
+            <li class="list-group-item list-group-item-action" *ngFor="let c of clientesFiltrados"
+              (click)="seleccionarCliente(c)">
+              {{ c.nombre }} — ID {{c.idCliente}}
+            </li>
+          </ul>
+          <small *ngIf="textoClienteRef.errors?.['required'] && textoClienteRef.touched" class="text-danger">
+            Este campo es obligatorio
+          </small>
+        </div>
+        <input type="hidden" name="idCliente" [(ngModel)]="model.idCliente">
 
-          <!-- Cantidad -->
-          <div class="mb-3">
-            <label class="form-label">Cantidad de Boletos</label>
-            <input type="number" class="form-control" name="cantidadBoletos" required [(ngModel)]="model.cantidadBoletos" min="1">
-          </div>
+        <div class="campo">
+          <label>Fecha de Reservación</label>
+          <input type="date" class="input" name="fechaReservacion" required [(ngModel)]="model.fechaReservacion"
+            #fechaReservacion="ngModel" (blur)="fechaReservacion.control.markAsTouched()">
+          <small *ngIf="fechaReservacion.errors?.['required'] && fechaReservacion.touched" class="text-danger">
+            Seleccione una fecha válida
+          </small>
+        </div>
 
-          <!-- Total -->
-          <div class="mb-3">
-            <label class="form-label">Total</label>
-            <input type="number" class="form-control" name="total" required [(ngModel)]="model.total" min="0" step="0.01">
-          </div>
+        <div class="campo">
+          <label>Cantidad de Boletos</label>
+          <input type="number" class="input" name="cantidadBoletos" required [(ngModel)]="model.cantidadBoletos" min="1"
+            #cantidadBoletos="ngModel" (blur)="cantidadBoletos.control.markAsTouched()">
+          <small *ngIf="cantidadBoletos.errors?.['required'] && cantidadBoletos.touched" class="text-danger">
+            Este campo es obligatorio
+          </small>
+        </div>
 
-          <!-- Método de pago -->
-          <div class="mb-3">
-            <label class="form-label">Método de Pago</label>
-            <select class="form-control" name="metodoPago" required [(ngModel)]="model.metodoPago">
-              <option value="" disabled selected>Seleccione una opción</option>
-              <option value="Efectivo">Efectivo</option>
-              <option value="Tarjeta de crédito">Tarjeta de crédito</option>
-              <option value="Transferencia">Transferencia</option>
-            </select>
-          </div>
+        <div class="fila">
+        <div class="campo">
+          <label>Total</label>
+          <input type="number" class="input" name="total" required [(ngModel)]="model.total" min="0" step="0.01"
+            #total="ngModel" (blur)="total.control.markAsTouched()">
+          <small *ngIf="total.errors?.['required'] && total.touched" class="text-danger">
+            Este campo es obligatorio
+          </small>
+        </div>
 
-          <button type="submit" class="btn-boda w-100" [disabled]="f.invalid">
-            Agregar Reservación
-          </button>
+        <div class="campo">
+          <label>Método de Pago</label>
+          <select class="input" name="metodoPago" required [(ngModel)]="model.metodoPago" #metodoPago="ngModel"
+            (blur)="metodoPago.control.markAsTouched()">
+            <option value="" disabled selected>Seleccione una opción</option>
+            <option value="Efectivo">Efectivo</option>
+            <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+            <option value="Transferencia">Transferencia</option>
+          </select>
+          <small *ngIf="metodoPago.errors?.['required'] && metodoPago.touched" class="text-danger">
+            Seleccione un método de pago
+          </small>
+        </div>
+        </div>
 
-        </form>
-      </div>
+        <div class="botones">
+          <button type="submit" class="boton-principal" [disabled]="f.invalid">Agregar Reservación</button>
+        </div>
+
+      </form>
     </div>
   </div>
 </div>

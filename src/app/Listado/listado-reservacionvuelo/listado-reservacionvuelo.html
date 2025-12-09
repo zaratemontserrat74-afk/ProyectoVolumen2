@@ -1,54 +1,20 @@
-<!--<h2 style="text-align: center;">Listado de Reservaciones de Vuelos</h2>
-<div>
-  @if(cargando()){
-    <div>
-      <p>Cargando datos...</p>
-    </div>
-  }
-  @if(!cargando() && reservacionesVuelos().length > 0){
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>idReservacionVuelo</th>
-            <th>idVuelo</th>
-            <th>idCliente</th>
-            <th>Fecha de Reservación</th>
-            <th>Cantidad de Boletos</th>
-            <th>Total</th>
-            <th>Método de Pago</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for(r of reservacionesVuelos(); track r.idReservacionVuelo){
-          <tr>
-            <td>{{ r.idReservacionVuelo }}</td>
-            <td>{{ r.idVuelo }}</td>
-            <td>{{ r.idCliente }}</td>
-            <td>{{ r.fechaReservacion }}</td>
-            <td>{{ r.cantidadBoletos }}</td>
-            <td>{{ r.total }}</td>
-            <td>{{ r.metodoPago }}</td>
-          </tr>
-          }
-        </tbody>
-      </table>
-    </div>
-  }
-</div>-->
+<div class="img">
+  <img src="https://images.pexels.com/photos/28304626/pexels-photo-28304626.jpeg?_gl=1*1sugrfg*_ga*MTIxMzM4MDkxNS4xNzU4MTI2Mzg5*_ga_8JE65Q40S6*czE3NjQxNjczMTYkbzEyJGcxJHQxNzY0MTY4MjI2JGoyOCRsMCRoMA..">
+</div>
 
-<h2 style="text-align: center;">Listado de Reservaciones de Vuelo</h2>
-<div>
+<div class="contenedor">
+<h2 class="titulo">Listado de Reservaciones de Vuelo</h2>
+
   @if(cargando()){
     <div>
       <p>Cargando datos...</p>
     </div>
   }
-  <!-- Listado de reservaciones de vuelo en tarjetas -->
+
   @if(!cargando() && reservacionesVuelos().length > 0){
-    <div class="cards-container">
+    <div class="tarjetas">
       @for(r of reservacionesVuelos(); track r.idReservacionVuelo){
-        <div class="card">
+        <div class="postcard">
           <h3>Reservación ID: {{ r.idReservacionVuelo }}</h3>
 
           <p><strong>ID del Vuelo:</strong> {{ r.idVuelo }}</p>

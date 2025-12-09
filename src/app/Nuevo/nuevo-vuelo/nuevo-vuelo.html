@@ -1,120 +1,125 @@
-<div class="banner-container">
-  <img class="banner-img" src="" alt="Fondo de vuelo" />
+<div class="contenedor-cliente">
+  <div class="lado-izquierdo">
+    <div class="contenido-izquierdo">
+      <img src="https://i.pinimg.com/736x/9d/ea/ea/9deaea5a071303e691ee1646a936c8af.jpg" alt="Vuelo" class="imagen-lateral" />
+    </div>
+  </div>
 
-  <div class="banner-content">
-    <div class="d-flex justify-content-center align-items-center min-vh-100 bg-vuelo">
-      <div class="card-glass" style="max-width: 500px; width: 100%;">
-        <h2 class="text-center mb-4 title-vuelo">Agregar Nuevo Vuelo</h2>
+  <div class="lado-derecho">
+    <div class="tarjeta-formulario">
+      <h1 class="titulo-formulario">Agregar Nuevo Vuelo</h1>
+      <p class="subtitulo-formulario">Completa la información requerida</p>
 
-        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
 
-          <!-- Aerolínea -->
-          <div class="mb-3">
-            <label class="form-label">Aerolínea</label>
-            <input type="text" class="form-control" name="aerolinea" required [(ngModel)]="model.aerolinea" #aerolinea="ngModel">
-            @if (aerolinea.invalid && aerolinea.touched) {
-              <div class="text-danger small">Este campo es obligatorio</div>
-            }
+        <div class="campo">
+          <label>Aerolínea</label>
+          <input type="text" class="input" name="aerolinea" required [(ngModel)]="model.aerolinea" #aerolinea="ngModel" (blur)="aerolinea.control.markAsTouched()">
+          <small *ngIf="aerolinea.errors?.['required'] && aerolinea.touched" class="text-danger">
+            Este campo es obligatorio
+          </small>
+        </div>
+
+        <div class="fila">
+        <div class="campo">
+          <label>Origen</label>
+          <input type="text" class="input" name="origen" required [(ngModel)]="model.origen" #origen="ngModel" (blur)="origen.control.markAsTouched()">
+          <small *ngIf="origen.errors?.['required'] && origen.touched" class="text-danger">
+            Este campo es obligatorio
+          </small>
+        </div>
+
+        <div class="campo">
+          <label>Destino</label>
+          <input type="text" class="input" name="destino" required [(ngModel)]="model.destino" #destino="ngModel" (blur)="destino.control.markAsTouched()">
+          <small *ngIf="destino.errors?.['required'] && destino.touched" class="text-danger">
+            Este campo es obligatorio
+          </small>
+        </div>
+        </div>
+
+        <div class="fila">
+          <div class="campo">
+            <label>Fecha de Salida</label>
+            <input type="date" class="input" name="fechaSalida" required [(ngModel)]="model.fechaSalida" #fechaSalida="ngModel" (blur)="fechaSalida.control.markAsTouched()">
+            <small *ngIf="fechaSalida.errors?.['required'] && fechaSalida.touched" class="text-danger">
+              Este campo es obligatorio
+            </small>
           </div>
 
-          <!-- Origen -->
-          <div class="mb-3">
-            <label class="form-label">Origen</label>
-            <input type="text" class="form-control" name="origen" required [(ngModel)]="model.origen" #origen="ngModel">
-            @if (origen.invalid && origen.touched) {
-              <div class="text-danger small">Este campo es obligatorio</div>
-            }
+          <div class="campo">
+            <label>Hora de Salida</label>
+            <input type="time" class="input" name="horaSalida" required [(ngModel)]="model.horaSalida" #horaSalida="ngModel" (blur)="horaSalida.control.markAsTouched()">
+            <small *ngIf="horaSalida.errors?.['required'] && horaSalida.touched" class="text-danger">
+              Este campo es obligatorio
+            </small>
+          </div>
+        </div>
+
+        <div class="fila">
+          <div class="campo">
+            <label>Fecha de Llegada</label>
+            <input type="date" class="input" name="fechaLlegada" required [(ngModel)]="model.fechaLlegada" #fechaLlegada="ngModel" (blur)="fechaLlegada.control.markAsTouched()">
+            <small *ngIf="fechaLlegada.errors?.['required'] && fechaLlegada.touched" class="text-danger">
+              Este campo es obligatorio
+            </small>
           </div>
 
-          <!-- Destino -->
-          <div class="mb-3">
-            <label class="form-label">Destino</label>
-            <input type="text" class="form-control" name="destino" required [(ngModel)]="model.destino" #destino="ngModel">
-            @if (destino.invalid && destino.touched) {
-              <div class="text-danger small">Este campo es obligatorio</div>
-            }
+          <div class="campo">
+            <label>Hora de Llegada</label>
+            <input type="time" class="input" name="horaLlegada" required [(ngModel)]="model.horaLlegada" #horaLlegada="ngModel" (blur)="horaLlegada.control.markAsTouched()">
+            <small *ngIf="horaLlegada.errors?.['required'] && horaLlegada.touched" class="text-danger">
+              Este campo es obligatorio
+            </small>
+          </div>
+        </div>
+
+        <div class="fila">
+          <div class="campo">
+            <label>Precio del Boleto</label>
+            <input type="number" class="input" name="precioBoleto" required [(ngModel)]="model.precioBoleto" min="0" step="0.01" #precioBoleto="ngModel" (blur)="precioBoleto.control.markAsTouched()">
+            <small *ngIf="precioBoleto.errors?.['required'] && precioBoleto.touched" class="text-danger">
+              Este campo es obligatorio
+            </small>
           </div>
 
-          <!-- Fecha de salida -->
-          <div class="mb-3">
-            <label class="form-label">Fecha de Salida</label>
-            <input type="date" class="form-control" name="fechaSalida" required [(ngModel)]="model.fechaSalida" #fechaSalida="ngModel">
-            @if (fechaSalida.invalid && fechaSalida.touched) {
-              <div class="text-danger small">Seleccione una fecha válida</div>
-            }
+          <div class="campo">
+            <label>Asientos Totales</label>
+            <input type="number" class="input" name="asientosTotales" required [(ngModel)]="model.asientosTotales" min="1" #asientosTotales="ngModel" (blur)="asientosTotales.control.markAsTouched()">
+            <small *ngIf="asientosTotales.errors?.['required'] && asientosTotales.touched" class="text-danger">
+              Este campo es obligatorio
+            </small>
           </div>
+        </div>
 
-          <!-- Hora de salida -->
-          <div class="mb-3">
-            <label class="form-label">Hora de Salida</label>
-            <input type="time" class="form-control" name="horaSalida" required [(ngModel)]="model.horaSalida" #horaSalida="ngModel">
-            @if (horaSalida.invalid && horaSalida.touched) {
-              <div class="text-danger small">Seleccione una hora válida</div>
-            }
-          </div>
+        <div class="fila">
+        <div class="campo">
+          <label>Duración</label>
+          <input type="text" class="input" name="duracion" required [(ngModel)]="model.duracion" #duracion="ngModel" (blur)="duracion.control.markAsTouched()">
+          <small *ngIf="duracion.errors?.['required'] && duracion.touched" class="text-danger">
+            Este campo es obligatorio
+          </small>
+        </div>
 
-          <!-- Fecha de llegada -->
-          <div class="mb-3">
-            <label class="form-label">Fecha de Llegada</label>
-            <input type="date" class="form-control" name="fechaLlegada" required [(ngModel)]="model.fechaLlegada" #fechaLlegada="ngModel">
-            @if (fechaLlegada.invalid && fechaLlegada.touched) {
-              <div class="text-danger small">Seleccione una fecha válida</div>
-            }
-          </div>
+        <div class="campo">
+          <label>Clase</label>
+          <select class="input" name="clase" required [(ngModel)]="model.clase" #clase="ngModel" (blur)="clase.control.markAsTouched()">
+            <option value="" disabled selected>Seleccione una opción</option>
+            <option value="Económica">Económica</option>
+            <option value="Ejecutiva">Ejecutiva</option>
+            <option value="Primera">Primera</option>
+          </select>
+          <small *ngIf="clase.errors?.['required'] && clase.touched" class="text-danger">
+            Este campo es obligatorio
+          </small>
+        </div>
+        </div>
 
-          <!-- Hora de llegada -->
-          <div class="mb-3">
-            <label class="form-label">Hora de Llegada</label>
-            <input type="time" class="form-control" name="horaLlegada" required [(ngModel)]="model.horaLlegada" #horaLlegada="ngModel">
-            @if (horaLlegada.invalid && horaLlegada.touched) {
-              <div class="text-danger small">Seleccione una hora válida</div>
-            }
-          </div>
+        <div class="botones">
+          <button type="submit" class="boton-principal" [disabled]="f.invalid">Agregar Vuelo</button>
+        </div>
 
-          <!-- Duración -->
-          <div class="mb-3">
-            <label class="form-label">Duración</label>
-            <input type="text" class="form-control" name="duracion" required [(ngModel)]="model.duracion" #duracion="ngModel">
-            @if (duracion.invalid && duracion.touched) {
-              <div class="text-danger small">Este campo es obligatorio</div>
-            }
-          </div>
-
-          <!-- Precio del boleto -->
-          <div class="mb-3">
-            <label class="form-label">Precio del Boleto</label>
-            <input type="number" class="form-control" name="precioBoleto" required [(ngModel)]="model.precioBoleto" #precioBoleto="ngModel" min="0" step="0.01">
-            @if (precioBoleto.invalid && precioBoleto.touched) {
-              <div class="text-danger small">Ingrese un precio válido</div>
-            }
-          </div>
-
-          <!-- Asientos totales -->
-          <div class="mb-3">
-            <label class="form-label">Asientos Totales</label>
-            <input type="number" class="form-control" name="asientosTotales" required [(ngModel)]="model.asientosTotales" #asientosTotales="ngModel" min="1">
-            @if (asientosTotales.invalid && asientosTotales.touched) {
-              <div class="text-danger small">Ingrese un número válido de asientos</div>
-            }
-          </div>
-
-          <!-- Clase -->
-          <div class="mb-3">
-            <label class="form-label">Clase</label>
-            <select class="form-control" name="clase" required [(ngModel)]="model.clase" #clase="ngModel">
-              <option value="" disabled selected>Seleccione una opción</option>
-              <option value="Económica">Económica</option>
-              <option value="Ejecutiva">Ejecutiva</option>
-              <option value="Primera">Primera</option>
-            </select>
-            @if (clase.invalid && clase.touched) {
-              <div class="text-danger small">Seleccione una clase</div>
-            }
-          </div>
-
-          <button type="submit" class="btn-boda w-100" [disabled]="f.invalid">Agregar Vuelo</button>
-        </form>
-      </div>
+      </form>
     </div>
   </div>
 </div>

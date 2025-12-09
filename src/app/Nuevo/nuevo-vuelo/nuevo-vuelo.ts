@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nuevo-vuelo',
   standalone: true,
-  imports: [FormsModule, HttpClientModule],
+  imports: [FormsModule, HttpClientModule,CommonModule],
   templateUrl: './nuevo-vuelo.html',
   styleUrls: ['./nuevo-vuelo.scss']
 })
@@ -19,30 +20,39 @@ export class NuevoVuelo {
     fechaLlegada: '',
     horaLlegada: '',
     duracion: '',
-    precioBoleto: 0,
-    asientosTotales: 0,
+    precioBoleto: '',
+    asientosTotales: '',
     clase: ''
   };
 
-  private apiUrl = 'http://localhost:3000/vuelos'; // URL para crear vuelos
+  private apiUrl = 'http://localhost:3000/vuelos';
+  isLoading = false;
 
   constructor(private http: HttpClient) { }
 
   onSubmit(form: NgForm) {
     if (form.invalid) {
+      Object.keys(form.controls).forEach(key => {
+        form.controls[key].markAsTouched();
+      });
       return;
     }
 
+    this.isLoading = true;
+
     this.http.post(this.apiUrl, this.model).subscribe({
-      next: () => {
-        console.log("Vuelo agregado de manera exitosa!");
+      next: (response) => {
+        console.log("Vuelo agregado de manera exitosa!", response);
         alert("Vuelo agregado de manera exitosa");
         form.resetForm();
+        this.isLoading = false;
       },
 
       error: (err) => {
-        console.log("Transacción fallida!");
+        console.error("Transacción fallida!", err);
         alert("Transacción fallida!");
+        this.isLoading = false;
+
       }
     });
   }

@@ -15,13 +15,11 @@ import { Cliente } from '../../Models/cliente.model/cliente.model';
 
 export class NuevoReservacionHotel implements OnInit {
 
-  // ---------- HOTELES ----------
   hoteles: Hotel[] = [];
   nombreHotel: string = "";
   hotelesFiltrados: Hotel[] = [];
   mostrarListaHoteles: boolean = false;
 
-  // ---------- CLIENTES ----------
   clientes: Cliente[] = [];
   nombreCliente: string = "";
   clientesFiltrados: Cliente[] = [];
@@ -31,11 +29,11 @@ export class NuevoReservacionHotel implements OnInit {
     idHotel: 0,
     idCliente: 0,
     fechaReservacion: '',
-    numeroHuespedes: 1,
-    numeroHabitaciones: 1,
+    numeroHuespedes: '',
+    numeroHabitaciones: '',
     fechaEntrada: '',
     fechaSalida: '',
-    total: 0,
+    total: '',
     metodoPago: ''
   };
 
@@ -48,7 +46,6 @@ export class NuevoReservacionHotel implements OnInit {
     this.loadClientes();
   }
 
-  // ============ HOTELES ============
   loadHoteles() {
     this.http.get('http://localhost:3000/getAllHoteles')
       .subscribe((data: any) => {
@@ -71,7 +68,6 @@ export class NuevoReservacionHotel implements OnInit {
     this.mostrarListaHoteles = false;
   }
 
-  // ============ CLIENTES ============
   loadClientes() {
     this.http.get('http://localhost:3000/getAllClientes')
       .subscribe((data: any) => {
@@ -94,7 +90,6 @@ export class NuevoReservacionHotel implements OnInit {
     this.mostrarListaClientes = false;
   }
 
-  // ============ GUARDAR ============
   onSubmit(form: NgForm) {
     if (form.invalid) return;
 

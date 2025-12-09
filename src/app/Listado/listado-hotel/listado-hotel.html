@@ -1,56 +1,20 @@
-<!--<h2 style="text-align: center;">Listado de Hoteles</h2>
-<div>
-  @if(cargando()){
-    <div>
-      <p>Cargando datos...</p>
-    </div>
-  }
-  @if(!cargando() && hoteles().length > 0){
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>idHotel</th>
-            <th>Nombre</th>
-            <th>País</th>
-            <th>Ciudad</th>
-            <th>Estrellas</th>
-            <th>Precio por Noche</th>
-            <th>Tipo de Habitación</th>
-            <th>Descripción</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for(h of hoteles(); track h.idHotel){
-          <tr>
-            <td>{{ h.idHotel }}</td>
-            <td>{{ h.nombre }}</td>
-            <td>{{ h.pais }}</td>
-            <td>{{ h.ciudad }}</td>
-            <td>{{ h.estrellas }}</td>
-            <td>{{ h.precioNoche }}</td>
-            <td>{{ h.tipoHabitacion }}</td>
-            <td>{{ h.descripcion }}</td>
-          </tr>
-          }
-        </tbody>
-      </table>
-    </div>
-  }
-</div>-->
+<div class="img">
+  <img src="https://images.pexels.com/photos/28304626/pexels-photo-28304626.jpeg?_gl=1*1sugrfg*_ga*MTIxMzM4MDkxNS4xNzU4MTI2Mzg5*_ga_8JE65Q40S6*czE3NjQxNjczMTYkbzEyJGcxJHQxNzY0MTY4MjI2JGoyOCRsMCRoMA..">
+</div>
 
-<h2 style="text-align: center;">Listado de Hoteles</h2>
-<div>
+<div class="contenedor">
+<h2 class="titulo">Listado de Hoteles</h2>
+
   @if(cargando()){
-    <div>
+    <div class="cargando">
       <p>Cargando datos...</p>
     </div>
   }
-  <!-- Listado de hoteles en tarjetas -->
+
   @if(!cargando() && hoteles().length > 0){
-    <div class="cards-container">
+    <div class="tarjetas">
       @for(h of hoteles(); track h.idHotel){
-        <div class="card">
+        <div class="postcard">
           <h3>{{ h.nombre }}</h3>
 
           <p><strong>ID del hotel:</strong> {{ h.idHotel }}</p>

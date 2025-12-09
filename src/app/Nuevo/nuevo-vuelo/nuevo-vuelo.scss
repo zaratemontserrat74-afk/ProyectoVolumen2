@@ -1,0 +1,176 @@
+
+.contenedor-cliente {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  font-family: 'Montserrat';
+  margin-top: 55px;
+}
+
+.lado-izquierdo {
+  width: 40%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F3EFEB;
+}
+
+.contenido-izquierdo {
+  text-align: center;
+  padding: 20px;
+}
+
+.imagen-lateral {
+  margin-top: 30px;
+  width: 90%;
+  filter: drop-shadow(0 5px 20px rgba(0,0,0,0.4));
+}
+
+.lado-derecho {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: #F3EFEB;
+}
+
+.tarjeta-formulario {
+  width: 90%;
+  padding: 30px;
+  border-radius: 20px;
+  background: #E6EDEF;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+}
+
+.titulo-formulario {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #494E51;
+}
+
+.subtitulo-formulario {
+  margin-bottom: 25px;
+  color: #6a4b4b;
+}
+
+.campo {
+  margin-bottom: 25px;
+}
+
+.campo label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 2px solid #ABBCC4;
+  background-color: white;
+  transition: 0.3s ease;
+  height: 46px; /* FORZAR la misma altura */
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #ABBCC4;
+  box-shadow: 0 0 6px grey;
+  outline: none;
+}
+
+.text-danger {
+  color: #d9534f;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.fila {
+  display: flex;
+  gap: 20px;
+}
+
+.fila .campo {
+  flex: 1;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.boton-principal {
+  background-color: #ABBCC4;
+  color: white;
+  padding: 12px 26px;
+  border: none;
+  font-size: 15px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.boton-principal:hover {
+  background-color: #494E51;
+  transform: translateY(-2px);
+}
+
+.boton-borde {
+  background-color: transparent;
+  border: 2px solid #494E51;
+  padding: 12px 26px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #494E51;
+  transition: 0.3s;
+}
+
+.boton-borde:hover {
+  background-color: #494E51;
+  color: white;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .contenedor-cliente {
+    flex-direction: column;
+    height: auto;
+  }
+  .lado-izquierdo, .lado-derecho {
+    width: 100%;
+  }
+  .imagen-lateral {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .tarjeta-formulario {
+    width: 95%;
+    padding: 20px;
+  }
+  .fila {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tarjeta-formulario {
+    padding: 15px;
+  }
+  .botones {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .boton-borde,
+  .boton-principal {
+    width: 100%;
+  }
+}

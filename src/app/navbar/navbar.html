@@ -1,18 +1,27 @@
-<!-- Navbar -->
-  <nav class="navbar navbar-expand-md fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" routerLink="/">
-        <img src="https://images.vexels.com/media/users/3/224276/isolated/preview/49a540c374e5703b02660684f213af7c-logotipo-de-lugar-de-viaje-tropical.png" alt="Agencia Montse Logo" style="height: 60px; margin-right: 5px;">
-        <span class="Logo">Agencia Montse</span>
-      </a>
+<nav class="navbar navbar-expand-lg fixed-top navbar-custom">
+  <div class="container-fluid">
+    <img
+      src="https://images.vexels.com/media/users/3/224276/isolated/preview/49a540c374e5703b02660684f213af7c-logotipo-de-lugar-de-viaje-tropical.png"
+      alt="ViajaFácil Logo" class="logo">
+    <a class="navbar-brand " routerLink="/">ViajaFácil</a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto gap-3">
-          <li class="nav-item"><a class="nav-link" routerLink="/">Inicio</a></li>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">ViajaFácil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <ul class="navbar-nav flex-grow-1 pe-3">
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/">Inicio</a>
+          </li>
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Clientes</a>
@@ -21,7 +30,6 @@
               <li><a class="dropdown-item" routerLink="/cliente/nuevo">Agregar Cliente</a></li>
             </ul>
           </li>
-
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Hoteles</a>
@@ -54,83 +62,10 @@
               <li><a class="dropdown-item" routerLink="/reservacionvuelo/nuevo">Agregar Reservación Vuelo</a></li>
             </ul>
           </li>
+
         </ul>
       </div>
     </div>
-  </nav>
-
-  <!-- Sidebar y Overlay -->
-  <div class="open-sidebar-btn"><i class="bi bi-list"></i></div>
-  <div class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-      <h2>Agencia Montse</h2>
-      <span class="close-btn" id="closeSidebar">&times;</span>
-    </div>
-<ul class="sidebar-menu">
-
-  <li><a routerLink="/">🏠 Inicio</a></li>
-
-  <!-- Clientes -->
-  <li class="dropdown">
-    <a class="item dropdown-toggle" data-bs-toggle="dropdown">
-      <i class="bi bi-people-fill"></i>
-      <span class="text">Clientes</span>
-    </a>
-    <ul class="dropdown-menu custom-menu">
-      <li><a class="dropdown-item" routerLink="/cliente/listado">Listado Clientes</a></li>
-      <li><a class="dropdown-item" routerLink="/cliente/nuevo">Agregar Cliente</a></li>
-    </ul>
-  </li>
-
-  <!-- Hoteles -->
-  <li class="dropdown">
-    <a class="item dropdown-toggle" data-bs-toggle="dropdown">
-      <i class="bi bi-building"></i>
-      <span class="text">Hoteles</span>
-    </a>
-    <ul class="dropdown-menu custom-menu">
-      <li><a class="dropdown-item" routerLink="/hotel/listado">Listado Hoteles</a></li>
-      <li><a class="dropdown-item" routerLink="/hotel/nuevo">Agregar Hotel</a></li>
-    </ul>
-  </li>
-
-  <!-- Reservación Hotel -->
-  <li class="dropdown">
-    <a class="item dropdown-toggle" data-bs-toggle="dropdown">
-      <i class="bi bi-calendar2-check"></i>
-      <span class="text">Reservación Hotel</span>
-    </a>
-    <ul class="dropdown-menu custom-menu">
-      <li><a class="dropdown-item" routerLink="/reservacionhotel/listado">Listado reservación hotel</a></li>
-      <li><a class="dropdown-item" routerLink="/reservacionhotel/nuevo">Agregar reservación hotel</a></li>
-    </ul>
-  </li>
-
-  <!-- Vuelos -->
-  <li class="dropdown">
-    <a class="item dropdown-toggle" data-bs-toggle="dropdown">
-      <i class="bi bi-airplane-fill"></i>
-      <span class="text">Vuelos</span>
-    </a>
-    <ul class="dropdown-menu custom-menu">
-      <li><a class="dropdown-item" routerLink="/vuelo/listado">Listado Vuelos</a></li>
-      <li><a class="dropdown-item" routerLink="/vuelo/nuevo">Agregar Vuelo</a></li>
-    </ul>
-  </li>
-
-  <!-- Reservación Vuelo -->
-  <li class="dropdown">
-    <a class="item dropdown-toggle" data-bs-toggle="dropdown">
-      <i class="bi bi-ticket-perforated-fill"></i>
-      <span class="text">Reservación Vuelo</span>
-    </a>
-    <ul class="dropdown-menu custom-menu">
-      <li><a class="dropdown-item" routerLink="/reservacionvuelo/listado">Listado reservación vuelo</a></li>
-      <li><a class="dropdown-item" routerLink="/reservacionvuelo/nuevo">Agregar reservación vuelo</a></li>
-    </ul>
-  </li>
-
-</ul>
-
   </div>
-  <div class="overlay" id="overlay"></div>
+</nav>
+
